@@ -54,6 +54,7 @@ const options = {
   startDate: argv.startDate,
   endDate: argv.endDate,
   canadianAccounts: argv.canadianAccounts,
+  myDefaultShare: argv.myDefaultShare
 };
 
 userIO.init({logfile, printLogsOnScreen: argv.debug});

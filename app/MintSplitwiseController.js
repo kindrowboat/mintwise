@@ -27,6 +27,7 @@ const AssertionError = require("assert").AssertionError;
     log: function,
     view: MintwiseCliView,
     canadianAccounts: string[],
+    myDefaultShare?: number
   |}
 */
 
@@ -37,8 +38,9 @@ class MintSplitwiseController {
   /*:: _splitwiseGroupId: string */
   /*:: _splitwisePayerId: number */
   /*:: _splitwiseBorrowerId: number */
-  /*:: _log: function */
+  /*:: _myDefaultShare: number */
 
+  /*:: _log: function */
   /*:: _splitwiseRepository: SplitwiseRepository */
   /*:: _mintRepository: MintRepository */
   /*:: _transactions: Promise<MintTransaction[]> */
@@ -53,6 +55,7 @@ class MintSplitwiseController {
     this._splitwiseGroupId = options.splitwiseGroupId;
     this._splitwisePayerId = options.splitwisePayerId;
     this._splitwiseBorrowerId = options.splitwiseBorrowerId;
+    this._myDefaultShare = options.myDefaultShare || 0.5;
 
     this._splitwiseRepository = new SplitwiseRepository({
       consumerKey: options.splitwiseConsumerKey,
@@ -107,6 +110,7 @@ class MintSplitwiseController {
         payerId: this._splitwisePayerId,
         borrowerId: this._splitwiseBorrowerId,
         groupId: this._splitwiseGroupId,
+        myShare: this._myDefaultShare,
         categoryId,
         log: this._log
       }));
